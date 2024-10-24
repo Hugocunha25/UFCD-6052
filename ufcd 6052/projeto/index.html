@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Casa Inteligente</title>
+     <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <h1>Controle de Casa Inteligente</h1>
+
+    <div id="status">Persiana fechada | Portão fechado | Luzes apagadas</div>
+
+    <div class="imagem-container">
+        <img id="imagemPersiana" src="persiana-fechada.png" alt="Persiana">
+        <img id="imagemPortao" src="portao-fechado.png" alt="Portão">
+        <img id="imagemLuzes" src="lampada-apagada.png" alt="Lâmpada">
+    </div>
+
+    <div>
+        <button id="btnAbrirPersiana">Abrir Persiana</button>
+        <button id="btnFecharPersiana">Fechar Persiana</button>
+    </div>
+
+    <div>
+        <button id="btnAbrirPortao">Abrir Portão</button>
+        <button id="btnFecharPortao">Fechar Portão</button>
+    </div>
+
+    <div>
+        <button id="btnAcenderLuzes">Acender Luzes</button>
+        <button id="btnApagarLuzes">Apagar Luzes</button>
+    </div>
+
+    <script>
+        // Estado da persiana, portão e luzes
+        let persianaAberta = false;
+        let portaoAberto = false;
+        let luzesAcesas = false;
+
+        // Referência ao elemento de status e imagens
+        const status = document.getElementById('status');
+        const imagemPersiana = document.getElementById('imagemPersiana');
+        const imagemPortao = document.getElementById('imagemPortao');
+        const imagemLuzes = document.getElementById('imagemLuzes');
+
+        // Função para abrir a persiana
+        function abrirPersiana() {
+            if (!persianaAberta) {
+                console.log("Abrindo a persiana...");
+                imagemPersiana.src = "persiana-abrindo.gif";  // Imagem animada da persiana abrindo
+                
+                setTimeout(() => {
+                    persianaAberta = true;
+                    imagemPersiana.src = "persiana-aberta.png";  // Imagem da persiana aberta
+                    atualizarStatus();
+                    console.log("Persiana aberta.");
+                }, 3000);
+            } else {
+                console.log("A persiana já está aberta.");
+            }
+        }
+
+        // Função para fechar a persiana
+        function fecharPersiana() {
+            if (persianaAberta) {
+                console.log("Fechando a persiana...");
+                imagemPersiana.src = "persiana-fechando.gif";  // Imagem animada da persiana fechando
+                
+                setTimeout(() => {
+                    persianaAberta = false;
+                    imagemPersiana.src = "persiana-fechada.png";  // Imagem da persiana fechada
+                    atualizarStatus();
+                    console.log("Persiana fechada.");
+                }, 3000);
+            } else {
+                console.log("A persiana já está fechada.");
+            }
+        }
+
+        // Função para abrir o portão
+        function abrirPortao() {
+            if (!portaoAberto) {
+                console.log("Abrindo o portão...");
+                imagemPortao.src = "portao-abrindo.gif";  // Imagem animada do portão abrindo
+                
+                setTimeout(() => {
+                    portaoAberto = true;
+                    imagemPortao.src = "portao-aberto.png";  // Imagem do portão aberto
+                    atualizarStatus();
+                    console.log("Portão aberto.");
+                }, 3000);
+            } else {
+                console.log("O portão já está aberto.");
+            }
+        }
+
+        // Função para fechar o portão
+        function fecharPortao() {
+            if (portaoAberto) {
+                console.log("Fechando o portão...");
+                imagemPortao.src = "portao-fechando.gif";  // Imagem animada do portão fechando
+                
+                setTimeout(() => {
+                    portaoAberto = false;
+                    imagemPortao.src = "portao-fechado.png";  // Imagem do portão fechado
+                    atualizarStatus();
+                    console.log("Portão fechado.");
+                }, 3000);
+            } else {
+                console.log("O portão já está fechado.");
+            }
+        }
+
+        // Função para acender as luzes
+        function acenderLuzes() {
+            if (!luzesAcesas) {
+                console.log("Acendendo as luzes...");
+                imagemLuzes.src = "lampada-acesa.png";  // Imagem da lâmpada acesa
+                
+                setTimeout(() => {
+                    luzesAcesas = true;
+                    atualizarStatus();
+                    console.log("Luzes acesas.");
+                }, 1000);
+            } else {
+                console.log("As luzes já estão acesas.");
+            }
+        }
+
+        // Função para apagar as luzes
+        function apagarLuzes() {
+            if (luzesAcesas) {
+                console.log("Apagando as luzes...");
+                imagemLuzes.src = "lampada-apagada.png";  // Imagem da lâmpada apagada
+                
+                setTimeout(() => {
+                    luzesAcesas = false;
+                    atualizarStatus();
+                    console.log("Luzes apagadas.");
+                }, 1000);
+            } else {
+                console.log("As luzes já estão apagadas.");
+            }
+        }
+
+        // Função para atualizar o status
+        function atualizarStatus() {
+            const persianaStatus = persianaAberta ? "aberta" : "fechada";
+            const portaoStatus = portaoAberto ? "aberto" : "fechado";
+            const luzesStatus = luzesAcesas ? "acesas" : "apagadas";
+            status.innerText = `Persiana ${persianaStatus} | Portão ${portaoStatus} | Luzes ${luzesStatus}`;
+        }
+
+        // Adicionando eventos de clique aos botões
+        document.getElementById('btnAbrirPersiana').onclick = abrirPersiana;
+        document.getElementById('btnFecharPersiana').onclick = fecharPersiana;
+        document.getElementById('btnAbrirPortao').onclick = abrirPortao;
+        document.getElementById('btnFecharPortao').onclick = fecharPortao;
+        document.getElementById('btnAcenderLuzes').onclick = acenderLuzes;
+        document.getElementById('btnApagarLuzes').onclick = apagarLuzes;
+    </script>
+</body>
+</html>

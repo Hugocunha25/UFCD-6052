@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador Infinito</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .counter {
+            font-size: 48px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+  
+    <div id="contador">0</div>
+    <button id="iniciar">Iniciar</button>
+    
+
+    <script>
+        let count = 0;
+        const counterElement = document.getElementById('counter');
+
+        // Função para incrementar o contador a cada segundo
+        setInterval(() => {
+            count++;
+            counterElement.textContent = count;
+        }, 1000); // 1000ms = 1 segundo
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+    
