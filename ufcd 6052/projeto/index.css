@@ -1,29 +1,90 @@
+/* Estilos Básicos */
 body {
     font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+}
+
+.container {
     text-align: center;
-    margin-top: 50px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 320px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.control {
+    margin: 15px 0;
+    position: relative;
 }
 
 button {
     padding: 10px 20px;
     font-size: 16px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    margin: 10px;
+    background-color: #4CAF50;
+    color: white;
+    margin-bottom: 10px;
 }
 
-#status {
-    margin: 20px;
-    font-size: 20px;
-    font-weight: bold;
+button:active {
+    transform: scale(0.95);
 }
 
-.imagem-container {
-    margin-top: 20px;
+.visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
 }
 
-img {
-    max-width: 200px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+/* Visualização e animação das Persianas */
+.persiana {
+    width: 100px;
+    height: 80px;
+    background-color: #333;
+    transition: height 1s;
+    overflow: hidden;
+}
+
+.persiana.aberta {
+    height: 0;
+}
+
+/* Visualização e animação do Portão */
+.portao {
+    width: 100px;
+    height: 80px;
+    background-color: #555;
+    transition: width 1s;
+}
+
+.portao.aberto {
+    width: 0;
+}
+
+/* Visualização e animação da Lâmpada */
+.lampada {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    background-image: url('lampada-apagada.png'); /* Imagem da lâmpada apagada */
+    transition: background-image 0.5s;
+}
+
+.lampada.acesa {
+    background-image: url('lampada-acesa.png'); /* Imagem da lâmpada acesa */
 }
